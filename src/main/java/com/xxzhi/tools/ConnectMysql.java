@@ -13,8 +13,9 @@ public class ConnectMysql {
     static private final String PASSWORD="024019";
     static private final String DRIVER="com.mysql.cj.jdbc.Driver";
     static private final String URL="jdbc:mysql://xxzhi.cn:3306/Library";
-    private static Connection conn=null;
-    static {
+
+    public Connection getConn() {
+        Connection conn=null;
         try {
             //注册驱动
             Class.forName(DRIVER);
@@ -23,8 +24,6 @@ public class ConnectMysql {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-    }
-    public static Connection getConn() {
         return conn;
     }
 }

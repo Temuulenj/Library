@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author xxzhi
  */
 public class ReaderDao {
-    static Connection conn= ConnectMysql.getConn();
+    static Connection conn= new ConnectMysql().getConn();
     static PreparedStatement preStr;
     static ResultSet rs;
 
@@ -22,7 +22,7 @@ public class ReaderDao {
      * @param reader 读者
      * @return 是否成功
      */
-    static boolean inser(Reader reader){
+    static boolean insert(Reader reader){
         String sql="INSERT INTO READER(READER_ID, NAME, PASSWORD, EMAIL) VALUES (?,?,?,?)";
         try {
             preStr=conn.prepareStatement(sql);

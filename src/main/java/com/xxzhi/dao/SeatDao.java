@@ -1,8 +1,6 @@
 package com.xxzhi.dao;
 
-import com.xxzhi.pojo.Reader;
 import com.xxzhi.pojo.Seat;
-import com.xxzhi.pojo.ViolationInfo;
 import com.xxzhi.tools.ConnectMysql;
 
 import java.sql.Connection;
@@ -16,7 +14,7 @@ import java.util.ArrayList;
  * @author xxzhi
  */
 public class SeatDao {
-    static Connection conn= ConnectMysql.getConn();
+    static Connection conn= new ConnectMysql().getConn();
     static PreparedStatement preStr;
     static ResultSet rs;
 
@@ -25,7 +23,7 @@ public class SeatDao {
      * @param seat 座位
      * @return 是否成功
      */
-    static boolean inser(Seat seat){
+    public static boolean insert(Seat seat){
         String sql="INSERT INTO SEAT(SEAT_ID, FLOOR, NUM, STATUS) VALUES (?,?,?,?)";
         try {
             preStr=conn.prepareStatement(sql);

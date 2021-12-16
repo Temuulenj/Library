@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author xxzhi
  */
 public class ReserveInfoDao {
-    static Connection conn= ConnectMysql.getConn();
+    static Connection conn= new ConnectMysql().getConn();
     static PreparedStatement preStr;
     static ResultSet rs;
 

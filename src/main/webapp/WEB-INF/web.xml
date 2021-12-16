@@ -3,5 +3,21 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>Library</display-name>
+  <filter>
+    <filter-name>CORSFilter</filter-name>
+    <filter-class>com.xxzhi.Filter.CORSFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CORSFilter</filter-name>
+    <url-pattern>/</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>getAllSeat</servlet-name>
+    <servlet-class>com.xxzhi.servlet.GetAllSeat</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getAllSeat</servlet-name>
+    <url-pattern>/api/getAllSeat</url-pattern>
+  </servlet-mapping>
 </web-app>
