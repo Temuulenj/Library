@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class ViolationInfoDao {
     static Connection conn=ConnectMysql.getConn();
     static PreparedStatement preStr;
-    static ResultSet resultSet;
+    static ResultSet rs;
     public static boolean insert(ViolationInfo violationInfo){
         String sql="INSERT INTO VIOLATION_INFO(READER_ID,TYPE,SEAT_ID) VALUES (?,?,?)";
         try {
@@ -41,10 +41,10 @@ public class ViolationInfoDao {
         try {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,readerId);
-            resultSet=preStr.executeQuery();
-            while (resultSet.next()){
-                result.add(new ViolationInfo(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),
-                        resultSet.getInt(4),resultSet.getString(5)));
+            rs =preStr.executeQuery();
+            while (rs.next()){
+                result.add(new ViolationInfo(rs.getString(1), rs.getString(2), rs.getString(3),
+                        rs.getInt(4), rs.getString(5)));
             }
             return result;
         } catch (SQLException e) {
@@ -58,10 +58,10 @@ public class ViolationInfoDao {
         String sql="SELECT * FROM VIOLATION_INFO";
         try {
             preStr=conn.prepareStatement(sql);
-            resultSet=preStr.executeQuery();
-            while (resultSet.next()){
-                result.add(new ViolationInfo(resultSet.getString(1),resultSet.getString(2),resultSet.getString(3),
-                        resultSet.getInt(4),resultSet.getString(5)));
+            rs =preStr.executeQuery();
+            while (rs.next()){
+                result.add(new ViolationInfo(rs.getString(1), rs.getString(2), rs.getString(3),
+                        rs.getInt(4), rs.getString(5)));
             }
             return result;
         } catch (SQLException e) {
