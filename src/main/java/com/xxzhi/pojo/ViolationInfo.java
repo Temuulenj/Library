@@ -11,6 +11,23 @@ public class ViolationInfo {
     private String time;
     private int type;
     private String seatId;
+    private int violathionType;
+
+    public ViolationInfo(String readerId, int type, String seatId, int violathionType) {
+        this.readerId = readerId;
+        this.type = type;
+        this.seatId = seatId;
+        this.violathionType = violathionType;
+    }
+
+    public ViolationInfo(String violationId, String readerId, String time, int type, String seatId, int violathionType) {
+        this.violationId = violationId;
+        this.readerId = readerId;
+        this.time = time;
+        this.type = type;
+        this.seatId = seatId;
+        this.violathionType = violathionType;
+    }
 
     public ViolationInfo() {
     }
@@ -21,12 +38,12 @@ public class ViolationInfo {
         this.seatId = seatId;
     }
 
-    public ViolationInfo(String violationId, String readerId, String time, int type, String seatId) {
-        this.violationId = violationId;
-        this.readerId = readerId;
-        this.time = time;
-        this.type = type;
-        this.seatId = seatId;
+    public int getViolathionType() {
+        return violathionType;
+    }
+
+    public void setViolathionType(int violathionType) {
+        this.violathionType = violathionType;
     }
 
     public String getViolationId() {

@@ -5,21 +5,46 @@ import com.alibaba.fastjson.JSONObject;
 /**
  * 读者实体
  * @author temuulen
+ * @value readerId 读者编号
+ * @value password 密码
+ * @value name     读者姓名
+ * @value email    读者邮箱
+ * @value reserveStatus 是否预约  有预约->0,未预约->1;
+ * @value seatId    预约的座位、允许为空
  */
 public class Reader {
     private String readerId;
     private String password;
     private String name;
     private String email;
-
+    private int reserveStatus;
+    private String seatId;
     public Reader() {
     }
 
-    public Reader(String readerId, String password, String name, String email) {
+    public Reader(String readerId, String password, String name, String email, int reserveStatus, String seatId) {
         this.readerId = readerId;
         this.password = password;
         this.name = name;
         this.email = email;
+        this.reserveStatus = reserveStatus;
+        this.seatId = seatId;
+    }
+
+    public String getSeatId() {
+        return seatId;
+    }
+
+    public void setSeatId(String seatId) {
+        this.seatId = seatId;
+    }
+
+    public int getReserveStatus() {
+        return reserveStatus;
+    }
+
+    public void setReserveStatus(int reserveStatus) {
+        this.reserveStatus = reserveStatus;
     }
 
     public String getReaderId() {

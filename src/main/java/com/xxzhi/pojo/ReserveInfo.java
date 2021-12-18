@@ -13,7 +13,7 @@ public class ReserveInfo {
     private String seatId;
     private String startTime;
     private String endTime;
-
+    private int type;
     public ReserveInfo() {
     }
 
@@ -22,6 +22,28 @@ public class ReserveInfo {
         this.seatId = seatId;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    public ReserveInfo(String readerId, String seatId, int type) {
+        this.readerId = readerId;
+        this.seatId = seatId;
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public ReserveInfo(String readerId, String seatId, String startTime, String endTime, int type) {
+        this.readerId = readerId;
+        this.seatId = seatId;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.type = type;
     }
 
     public ReserveInfo(String infoId, String time, String readerId, String seatId, String startTime, String endTime) {

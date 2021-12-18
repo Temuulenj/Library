@@ -24,6 +24,14 @@
     <servlet-name>getAllSeatInfo</servlet-name>
     <servlet-class>com.xxzhi.servlet.GetAllSeatInfo</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>reserve</servlet-name>
+    <servlet-class>com.xxzhi.servlet.ReserveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>reserve</servlet-name>
+    <url-pattern>/api/reserve</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>getAllSeatInfo</servlet-name>
     <url-pattern>/api/getSeatInfo</url-pattern>

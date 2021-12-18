@@ -22,14 +22,16 @@ public class ReaderDao {
      * @param reader 读者
      * @return 是否成功
      */
-    static boolean insert(Reader reader){
-        String sql="INSERT INTO READER(READER_ID, NAME, PASSWORD, EMAIL) VALUES (?,?,?,?)";
+    public static boolean insert(Reader reader){
+        String sql="INSERT INTO READER(READER_ID, NAME, PASSWORD, EMAIL,RESERVE_STATUS,SEAT_ID) VALUES (?,?,?,?,?,?)";
         try {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,reader.getReaderId());
             preStr.setString(2,reader.getName());
             preStr.setString(3, reader.getPassword());
             preStr.setString(4, reader.getEmail());
+            preStr.setInt(5,reader.getReserveStatus());
+            preStr.setString(6,reader.getSeatId());
             return preStr.executeUpdate()==1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -41,17 +43,36 @@ public class ReaderDao {
      * 获取所有的读者数据
      * @return 用户数据
      */
-    static ArrayList<Reader> selectAll(){
+    public static ArrayList<Reader> selectAll(){
         ArrayList<Reader> readers=new ArrayList<>();
         String sql="SELECT * FROM READER";
         try {
             preStr=conn.prepareStatement(sql);
             rs= preStr.executeQuery();
             while (rs.next()){
-                readers.add(new Reader(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+                readers.add(new Reader(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6)));
             }
             conn.close();
             return readers;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    /**
+     *
+     */
+    public static Reader selectOne(String readerId){
+        Connection conn= new ConnectMysql().getConn();
+        String sql="SELECT * FROM READER where READER_ID=?";
+        try {
+            preStr=conn.prepareStatement(sql);
+            preStr.setString(1,readerId);
+            rs= preStr.executeQuery();
+            while (!rs.next()){
+                return null;
+            }
+            return new Reader(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getString(6));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -63,14 +84,16 @@ public class ReaderDao {
      * @param reader 要更新的reader
      * @return 是否成功
      */
-    static boolean update(Reader reader){
-        String sql="UPDATE READER SET NAME=?,PASSWORD=?,EMAIL=? WHERE READER_ID=?";
+    public static boolean updateOne(Reader reader){
+        String sql="UPDATE READER SET NAME=?,PASSWORD=?,EMAIL=?,RESERVE_STATUS=?,SEAT_ID=? WHERE READER_ID=?";
         try {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,reader.getName());
-            preStr.setString(2, reader.getName());
-            preStr.setString(3, reader.getPassword());
-            preStr.setString(4, reader.getReaderId());
+            preStr.setString(2, reader.getPassword());
+            preStr.setString(3, reader.getEmail());
+            preStr.setInt(4,reader.getReserveStatus());
+            preStr.setString(5,reader.getSeatId());
+            preStr.setString(6,reader.getReaderId());
             return preStr.executeUpdate()==1;
         } catch (SQLException e) {
             e.printStackTrace();

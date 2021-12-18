@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 /**
  * @author temuulen
+ * @value floor 楼层数
+ * @value seats 预约状态
  */
 public class FloorSeat {
     private int floor;

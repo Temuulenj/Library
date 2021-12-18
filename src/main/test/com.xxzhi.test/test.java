@@ -5,6 +5,7 @@ import com.xxzhi.dao.SeatDao;
 import com.xxzhi.dao.ViolationInfoDao;
 import com.xxzhi.pojo.Seat;
 import com.xxzhi.pojo.ViolationInfo;
+import com.xxzhi.service.ReserveService;
 import com.xxzhi.service.SeatService;
 import com.xxzhi.servlet.GetSeatByFloor;
 import org.junit.Test;
@@ -26,19 +27,6 @@ public class test {
         }
     }
 
-    @Test
-    public void init(){
-        for(int i=1;i<10;i++){
-            for(int j=1;j<10;j++){
-                boolean a=SeatDao.insert(new Seat(String.valueOf(i*100+j),i,j,1));
-                if (!a) {
-                    System.out.println("error");
-                    return;
-                }
-            }
-        }
-        System.out.println("done");
-    }
 
 
     /**
@@ -50,6 +38,8 @@ public class test {
 //        Seat seat= JSON.parseObject(jsonString,Seat.class);
 //        System.out.println(seat.getFloor()+" "+seat.getStatus());
 //        System.out.println(new SeatService().getByFloor(1));
+        System.out.println(new ReserveService().reserve("201916010606","101"));
+        System.out.println(new ReserveService().cancelReserve("201916010606"));
     }
 
 }

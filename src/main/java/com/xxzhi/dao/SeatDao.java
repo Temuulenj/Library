@@ -23,7 +23,7 @@ public class SeatDao {
      * @return 是否成功
      */
     public static boolean insert(Seat seat){
-        String sql="INSERT INTO SEAT(SEAT_ID, FLOOR, NUM, STATUS) VALUES (?,?,?,?)";
+        String sql="INSERT INTO SEAT(SEAT_ID, FLOOR, NUM, STATUS,END_TIME,READER_ID) VALUES (?,?,?,?,?,?)";
         try {
             Connection conn= new ConnectMysql().getConn();
             preStr=conn.prepareStatement(sql);
@@ -31,6 +31,8 @@ public class SeatDao {
             preStr.setInt(2,seat.getFloor());
             preStr.setInt(3, seat.getNum());
             preStr.setInt(4, seat.getStatus());
+            preStr.setString(5,seat.getEndTime());
+            preStr.setString(6,seat.getReaderId());
             return preStr.executeUpdate()==1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,11 +52,10 @@ public class SeatDao {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,seatId);
             rs =preStr.executeQuery();
-            if (rs==null) {
-                conn.close();
+            while (!rs.next()){
                 return null;
             }
-            return new Seat(rs.getString(1),rs.getInt(2),rs.getInt(3),rs.getInt(4));
+            return new Seat(rs.getString(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5), rs.getString(6));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -74,7 +75,7 @@ public class SeatDao {
             rs =preStr.executeQuery();
             while (rs.next()){
                 result.add(new Seat(rs.getString(1), rs.getInt(2),
-                        rs.getInt(3),rs.getInt(4)));
+                        rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6)));
             }
             conn.close();
             return result;
@@ -90,12 +91,14 @@ public class SeatDao {
      * @return 是否成功
      */
     public static boolean updateOne(Seat seat){
-        String sql="UPDATE SEAT SET STATUS=? WHERE SEAT_ID=?";
+        String sql="UPDATE SEAT SET STATUS=?,END_TIME=?,READER_ID=? WHERE SEAT_ID=?";
         Connection conn= new ConnectMysql().getConn();
         try {
             preStr=conn.prepareStatement(sql);
             preStr.setInt(1,seat.getStatus());
-            preStr.setString(2,seat.getSeatId());
+            preStr.setString(2,seat.getEndTime());
+            preStr.setString(3,seat.getReaderId());
+            preStr.setString(4,seat.getSeatId());
             return preStr.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,7 +126,7 @@ public class SeatDao {
                 preStr.setInt(1,floor);
                 rs=preStr.executeQuery();
                 while (rs.next()){
-                    list.add(new Seat(rs.getString(1), rs.getInt(2),rs.getInt(3),rs.getInt(4) ));
+                    list.add(new Seat(rs.getString(1), rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6) ));
                 }
                 return list;
             } catch (SQLException e) {
@@ -137,7 +140,7 @@ public class SeatDao {
                 preStr.setInt(2,status);
                 rs=preStr.executeQuery();
                 while (rs.next()){
-                    list.add(new Seat(rs.getString(1), rs.getInt(2),rs.getInt(3),rs.getInt(4) ));
+                    list.add(new Seat(rs.getString(1), rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6) ));
                 }
                 return list;
             } catch (SQLException e) {
