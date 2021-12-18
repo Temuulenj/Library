@@ -1,5 +1,7 @@
 package com.xxzhi.pojo;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * 读者实体
  * @author temuulen
@@ -50,5 +52,10 @@ public class Reader {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString(){
+        return JSONObject.toJSONString(this,true);
     }
 }

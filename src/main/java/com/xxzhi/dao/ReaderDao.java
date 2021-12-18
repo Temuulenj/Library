@@ -50,6 +50,7 @@ public class ReaderDao {
             while (rs.next()){
                 readers.add(new Reader(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
             }
+            conn.close();
             return readers;
         } catch (SQLException e) {
             e.printStackTrace();

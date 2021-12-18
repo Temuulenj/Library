@@ -30,6 +30,7 @@ public class ReserveInfoDao {
             preStr.setString(2,reserveInfo.getSeatId());
             preStr.setString(3,reserveInfo.getStartTime());
             preStr.setString(4,reserveInfo.getEndTime());
+            conn.close();
             return preStr.executeUpdate()==1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,6 +51,7 @@ public class ReserveInfoDao {
             while (rs.next()){
                 result.add(new ReserveInfo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
+            conn.close();
             return result;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,6 +74,7 @@ public class ReserveInfoDao {
             while (rs.next()){
                 result.add(new ReserveInfo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
+            conn.close();
             return result;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,11 +1,12 @@
 package com.xxzhi.test;
 
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.xxzhi.dao.SeatDao;
 import com.xxzhi.dao.ViolationInfoDao;
 import com.xxzhi.pojo.Seat;
 import com.xxzhi.pojo.ViolationInfo;
-import com.xxzhi.service.SeatDataManagment;
+import com.xxzhi.service.SeatService;
+import com.xxzhi.servlet.GetSeatByFloor;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -45,8 +46,10 @@ public class test {
      */
     @Test
     public void serviceTest(){
-        String jsonString=new Seat("123",12,3,2).toString();
-        Seat seat= JSON.parseObject(jsonString,Seat.class);
-        System.out.println(seat.getFloor()+" "+seat.getStatus());
+//        String jsonString=new Seat("123",12,3,2).toString();
+//        Seat seat= JSON.parseObject(jsonString,Seat.class);
+//        System.out.println(seat.getFloor()+" "+seat.getStatus());
+//        System.out.println(new SeatService().getByFloor(1));
     }
+
 }
