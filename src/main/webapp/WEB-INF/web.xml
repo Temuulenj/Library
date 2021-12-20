@@ -12,44 +12,4 @@
     <filter-name>CORSFilter</filter-name>
     <url-pattern>/</url-pattern>
   </filter-mapping>
-  <servlet>
-    <servlet-name>getAllSeat</servlet-name>
-    <servlet-class>com.xxzhi.servlet.GetAllSeat</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>getSeatByFloor</servlet-name>
-    <servlet-class>com.xxzhi.servlet.GetSeatByFloor</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>getAllSeatInfo</servlet-name>
-    <servlet-class>com.xxzhi.servlet.GetAllSeatInfo</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>reserve</servlet-name>
-    <servlet-class>com.xxzhi.servlet.ReserveServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>Sign</servlet-name>
-    <servlet-class>com.xxzhi.servlet.SignServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Sign</servlet-name>
-    <url-pattern>/api/Sign</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>reserve</servlet-name>
-    <url-pattern>/api/reserve</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>getAllSeatInfo</servlet-name>
-    <url-pattern>/api/getSeatInfo</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>getSeatByFloor</servlet-name>
-    <url-pattern>/api/getByFloor</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>getAllSeat</servlet-name>
-    <url-pattern>/api/getAllSeat</url-pattern>
-  </servlet-mapping>
 </web-app>

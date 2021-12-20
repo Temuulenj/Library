@@ -50,7 +50,7 @@ public class ReaderDao {
             preStr=conn.prepareStatement(sql);
             rs= preStr.executeQuery();
             while (rs.next()){
-                readers.add(new Reader(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6)));
+                readers.add(new Reader(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6),rs.getInt(7),rs.getInt(8)));
             }
             conn.close();
             return readers;
@@ -75,7 +75,7 @@ public class ReaderDao {
             while (!rs.next()){
                 return null;
             }
-            return new Reader(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getString(6));
+            return new Reader(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5), rs.getString(6),rs.getInt(7),rs.getInt(8));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class ReaderDao {
      * @return 是否成功
      */
     public static boolean updateOne(Reader reader){
-        String sql="UPDATE READER SET NAME=?,PASSWORD=?,EMAIL=?,RESERVE_STATUS=?,SEAT_ID=? WHERE READER_ID=?";
+        String sql="UPDATE READER SET NAME=?,PASSWORD=?,EMAIL=?,RESERVE_STATUS=?,SEAT_ID=?,SIGN_IN_STATUS=? WHERE READER_ID=?";
         try {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,reader.getName());
@@ -96,7 +96,8 @@ public class ReaderDao {
             preStr.setString(3, reader.getEmail());
             preStr.setInt(4,reader.getReserveStatus());
             preStr.setString(5,reader.getSeatId());
-            preStr.setString(6,reader.getReaderId());
+            preStr.setInt(6,reader.getSignInStatus());
+            preStr.setString(7,reader.getReaderId());
             return preStr.executeUpdate()==1;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -23,14 +23,14 @@ public class ReserveInfoDao {
      * @return 是否成功
      */
     public static boolean insert(ReserveInfo reserveInfo){
-        String sql="INSERT INTO RESERVE_INFO (READER_ID,SEAT_ID,START_TIME,END_TIME,TYPE ) VALUES (?,?,?,?,?)";
+        String sql="INSERT INTO reserve_info (READER_ID,SEAT_ID,START_TIME,END_TIME,RESERVE_TYPE ) VALUES (?,?,?,?,?)";
         try {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,reserveInfo.getReaderId());
             preStr.setString(2,reserveInfo.getSeatId());
             preStr.setString(3,reserveInfo.getStartTime());
             preStr.setString(4,reserveInfo.getEndTime());
-            preStr.setInt(5,reserveInfo.getType());
+            preStr.setInt(5,reserveInfo.getReserveType());
             return !preStr.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,7 +49,7 @@ public class ReserveInfoDao {
             preStr=conn.prepareStatement(sql);
             rs =preStr.executeQuery();
             while (rs.next()){
-                result.add(new ReserveInfo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                result.add(new ReserveInfo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getInt(7)));
             }
             conn.close();
             return result;
@@ -68,7 +68,7 @@ public class ReserveInfoDao {
             while (!rs.next()){
                 return null;
             }
-            return new ReserveInfo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+            return new ReserveInfo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getInt(7));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -87,7 +87,7 @@ public class ReserveInfoDao {
             preStr.setString(1,readerId);
             rs =preStr.executeQuery();
             while (rs.next()){
-                result.add(new ReserveInfo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                result.add(new ReserveInfo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getInt(7)));
             }
             conn.close();
             return result;

@@ -7,68 +7,54 @@ import com.alibaba.fastjson.JSONObject;
  * @author xxzhi
  */
 public class ReserveInfo {
-    private String infoId;
-    private String time;
+    private String reserveId;
+    private String reserveTime;
     private String readerId;
     private String seatId;
     private String startTime;
     private String endTime;
-    private int type;
+    private int reserveType;
     public ReserveInfo() {
     }
 
-    public ReserveInfo(String readerId, String seatId, String startTime, String endTime) {
+    public ReserveInfo(String readerId, String seatId, String startTime, String endTime, int reserveType) {
         this.readerId = readerId;
         this.seatId = seatId;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.reserveType = reserveType;
     }
 
-    public ReserveInfo(String readerId, String seatId, int type) {
+    public ReserveInfo(String readerId, String seatId, int reserveType) {
         this.readerId = readerId;
         this.seatId = seatId;
-        this.type = type;
+        this.reserveType = reserveType;
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public ReserveInfo(String readerId, String seatId, String startTime, String endTime, int type) {
+    public ReserveInfo(String reserveId, String reserveTime, String readerId, String seatId, String startTime, String endTime, int reserveType) {
+        this.reserveId = reserveId;
+        this.reserveTime = reserveTime;
         this.readerId = readerId;
         this.seatId = seatId;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.type = type;
+        this.reserveType = reserveType;
     }
 
-    public ReserveInfo(String infoId, String time, String readerId, String seatId, String startTime, String endTime) {
-        this.infoId = infoId;
-        this.time = time;
-        this.readerId = readerId;
-        this.seatId = seatId;
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public String getReserveId() {
+        return reserveId;
     }
 
-    public String getInfoId() {
-        return infoId;
+    public void setReserveId(String reserveId) {
+        this.reserveId = reserveId;
     }
 
-    public void setInfoId(String infoId) {
-        this.infoId = infoId;
+    public String getReserveTime() {
+        return reserveTime;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setReserveTime(String reserveTime) {
+        this.reserveTime = reserveTime;
     }
 
     public String getReaderId() {
@@ -101,6 +87,14 @@ public class ReserveInfo {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public int getReserveType() {
+        return reserveType;
+    }
+
+    public void setReserveType(int reserveType) {
+        this.reserveType = reserveType;
     }
 
     @Override

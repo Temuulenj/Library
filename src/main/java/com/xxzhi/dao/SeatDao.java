@@ -23,6 +23,9 @@ public class SeatDao {
      * @return 是否成功
      */
     public static boolean insert(Seat seat){
+        if (seat==null) {
+            return false;
+        }
         String sql="INSERT INTO SEAT(SEAT_ID, FLOOR, NUM, STATUS,END_TIME,READER_ID) VALUES (?,?,?,?,?,?)";
         try {
             Connection conn= new ConnectMysql().getConn();
@@ -170,6 +173,9 @@ public class SeatDao {
             preStr=conn.prepareStatement(sql);
             preStr.setInt(1,floor);
             rs=preStr.executeQuery();
+            if (rs==null){
+                return -1;
+            }
             while (rs.next()){
                 result+=rs.getInt(1);
             }

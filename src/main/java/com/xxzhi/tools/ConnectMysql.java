@@ -12,7 +12,7 @@ public class ConnectMysql {
     static private final String USER="root";
     static private final String PASSWORD="024019";
     static private final String DRIVER="com.mysql.cj.jdbc.Driver";
-    static private final String URL="jdbc:mysql://xxzhi.cn:3306/Library";
+    static private final String URL="jdbc:mysql://localhost:3306/library";
 
     public Connection getConn() {
         Connection conn=null;

@@ -22,7 +22,13 @@ public class Seat {
     public Seat() {
     }
 
-    public Seat(String seatId, int floor, int num, int status,String endTime,String readerId) {
+    public Seat(String seatId, int floor, int num) {
+        this.seatId = seatId;
+        this.floor = floor;
+        this.num = num;
+    }
+
+    public Seat(String seatId, int floor, int num, int status, String endTime, String readerId) {
         this.seatId = seatId;
         this.floor = floor;
         this.num = num;
