@@ -19,19 +19,19 @@ public class ReserveService {
         Seat seat= SeatDao.selectOne(seatId);
         ReserveInfo reserveInfo=new ReserveInfo(readerId, seatId, startTime, endTime,1);
         if (reader==null){
-            return msg="此账号不存在";
+            return msg="Do not have this reader";
         }
         if (seat==null){
-            return msg="此座位不存在";
+            return msg="Do not have this seat";
         }
         if (reader.getReserveStatus()!=1){
-            return msg="该账号已预约"+reader.getSeatId()+"座位";
+            return msg="this reader was reserved "+reader.getSeatId()+" seats";
         }
         if (seat.getStatus()!=1){
-            return msg="该座位已有人预约、于"+seat.getEndTime()+"结束";
+            return msg="The seat has been reserved、Ends At"+seat.getEndTime();
         }
         if (reserveInfo==null){
-            return msg="预约记录不存在";
+            return msg="ReserveInfo is null";
         }
         seat.setStatus(0);
         seat.setEndTime(endTime);
@@ -45,12 +45,12 @@ public class ReserveService {
                     return msg="success";
                 }
                 else {
-                    return msg="ReserveInfo写入失败！";
+                    return msg="wrong with write reserveInfo！";
                 }
 
             }
             else {
-                return msg="reader更新失败！";
+                return msg="wrong with reader updating";
             }
         }else {
             //尝试恢复
@@ -61,7 +61,7 @@ public class ReserveService {
             reader.setReserveStatus(1);
             SeatDao.updateOne(seat);
             ReaderDao.updateOne(reader);
-            return msg="尝试修复";
+            return msg="try to rollback";
         }
     }
 

@@ -1,10 +1,12 @@
 package com.xxzhi.test;
 
 import com.alibaba.fastjson.JSONObject;
+import com.xxzhi.dao.ReaderDao;
 import com.xxzhi.dao.SeatDao;
 import com.xxzhi.dao.ViolationInfoDao;
 import com.xxzhi.pojo.Seat;
 import com.xxzhi.pojo.ViolationInfo;
+import com.xxzhi.service.ReaderService;
 import com.xxzhi.service.ReserveService;
 import com.xxzhi.service.SeatService;
 import com.xxzhi.servlet.GetSeatByFloor;
@@ -38,8 +40,8 @@ public class test {
 //        Seat seat= JSON.parseObject(jsonString,Seat.class);
 //        System.out.println(seat.getFloor()+" "+seat.getStatus());
 //        System.out.println(new SeatService().getByFloor(1));
-        System.out.println(new ReserveService().reserve("201916010606","101"));
-        System.out.println(new ReserveService().cancelReserve("201916010606"));
+//        System.out.println(new ReserveService().reserve("201916010606","101"));
+        //System.out.println(new ReaderService().signIn("201916010606","024019"));
+        System.out.println(ReaderDao.selectOne("201916010606"));
     }
-
 }

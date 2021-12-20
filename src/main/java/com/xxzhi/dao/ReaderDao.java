@@ -69,6 +69,9 @@ public class ReaderDao {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,readerId);
             rs= preStr.executeQuery();
+            if(rs==null){
+                return null;
+            }
             while (!rs.next()){
                 return null;
             }

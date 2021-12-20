@@ -8,23 +8,32 @@ import com.xxzhi.pojo.Reader;
  * @author temuulen
  */
 public class ReaderService {
-    public String signIn(String readerId, String password){
+    /**
+     *
+     * @param readerId 用户输入的ID
+     * @param password 用户输入的密码
+     * @return 成功->返回该用户信息，失败->返回空
+     */
+    public Reader signIn(String readerId, String password){
         Reader reader= ReaderDao.selectOne(readerId);
-        if (reader.getPassword()==password){
+        if (reader==null){
+            return null;
+        }
+        if (reader.getPassword().equals(password)){
             reader.setPassword(null);
-            return JSONObject.toJSONString(reader);
+            return reader;
         }else {
             return null;
         }
     }
     public String signUp(Reader reader){
         if (ReaderDao.selectOne(reader.getReaderId())!=null){
-            return "msg: '用户名已存在'";
+            return "This username is already registered";
         }else {
             if (ReaderDao.insert(reader)){
-                return "msg: 'success'";
+                return "success";
             }
-            return "msg: 'error'";
+            return "error";
         }
     }
 }

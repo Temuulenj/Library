@@ -14,18 +14,18 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class Reader {
     private String readerId;
-    private String password;
     private String name;
+    private String password;
     private String email;
     private int reserveStatus;
     private String seatId;
     public Reader() {
     }
 
-    public Reader(String readerId, String password, String name, String email, int reserveStatus, String seatId) {
+    public Reader(String readerId, String name, String password, String email, int reserveStatus, String seatId) {
         this.readerId = readerId;
-        this.password = password;
         this.name = name;
+        this.password = password;
         this.email = email;
         this.reserveStatus = reserveStatus;
         this.seatId = seatId;

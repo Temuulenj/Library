@@ -28,6 +28,14 @@
     <servlet-name>reserve</servlet-name>
     <servlet-class>com.xxzhi.servlet.ReserveServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>Sign</servlet-name>
+    <servlet-class>com.xxzhi.servlet.SignServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Sign</servlet-name>
+    <url-pattern>/api/Sign</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>reserve</servlet-name>
     <url-pattern>/api/reserve</url-pattern>
