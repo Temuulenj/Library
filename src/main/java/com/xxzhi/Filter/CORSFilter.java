@@ -1,9 +1,14 @@
 package com.xxzhi.Filter;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author temuulen
+ */
+@WebFilter("/")
 public class CORSFilter implements Filter{
     @Override
     public  void  init(FilterConfig filterConfig) {

@@ -7,17 +7,22 @@ import com.xxzhi.pojo.Reader;
 import com.xxzhi.pojo.ReserveInfo;
 import com.xxzhi.pojo.Seat;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @author temuulen
  */
 public class ReserveService {
-    public String reserve(String readerId,String seatId){
+    public String reserve(String readerId,String seatId,String startTime,String endTime){
         String msg;
-        String startTime="2021-11-11 00:00:00";
-        String endTime="2021-11-12 00:00:00";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        startTime=sdf.format(new Date())+" "+startTime+":00";
+        endTime=sdf.format(new Date())+" "+endTime+":00";
         Reader reader=ReaderDao.selectOne(readerId);
         Seat seat= SeatDao.selectOne(seatId);
         ReserveInfo reserveInfo=new ReserveInfo(readerId, seatId, startTime, endTime,1);
+        System.out.println(reserveInfo.toString());
         if (reader==null){
             return msg="Do not have this reader";
         }

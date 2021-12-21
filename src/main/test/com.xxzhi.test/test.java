@@ -13,7 +13,9 @@ import com.xxzhi.servlet.GetSeatByFloor;
 import org.junit.Test;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class test {
     @Test
@@ -44,6 +46,9 @@ public class test {
 //        System.out.println(new SeatService().getByFloor(1));
 //        System.out.println(new ReserveService().reserve("201916010606","101"));
         //System.out.println(new ReaderService().signIn("201916010606","024019"));
-        System.out.println(ReaderDao.selectOne("123"));
+        //System.out.println(ReaderDao.selectOne("123"));
+        Date date=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(sdf.format(date));
     }
 }

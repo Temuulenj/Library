@@ -5,11 +5,15 @@
 <web-app>
   <display-name>Library</display-name>
   <filter>
-    <filter-name>CORSFilter</filter-name>
-    <filter-class>com.xxzhi.Filter.CORSFilter</filter-class>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>com.xxzhi.Filter.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>CharsetEncoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
-    <filter-name>CORSFilter</filter-name>
-    <url-pattern>/</url-pattern>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
 </web-app>

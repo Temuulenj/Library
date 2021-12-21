@@ -26,6 +26,12 @@ public class ReaderService {
             return null;
         }
     }
+
+    /**
+     *
+     * @param reader
+     * @return
+     */
     public String signUp(Reader reader){
         if (ReaderDao.selectOne(reader.getReaderId())!=null){
             return "This username is already registered";

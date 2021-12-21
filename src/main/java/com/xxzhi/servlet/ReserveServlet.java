@@ -24,7 +24,7 @@ public class ReserveServlet extends HttpServlet {
         int status=Integer.parseInt(req.getParameter("status"));
         if (status==1){
 
-            resp.getWriter().print(new ReserveService().reserve(req.getParameter("readerId"),req.getParameter("seatId")));
+            resp.getWriter().print(new ReserveService().reserve(req.getParameter("readerId"),req.getParameter("seatId"),req.getParameter("startTime"),req.getParameter("endTime")));
         }else if (status==0){
             resp.getWriter().print(new ReserveService().cancelReserve(req.getParameter("readerId")));
         }
