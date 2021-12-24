@@ -26,7 +26,7 @@ public class SeatDao {
         if (seat==null) {
             return false;
         }
-        String sql="INSERT INTO SEAT(SEAT_ID, FLOOR, NUM, STATUS,END_TIME,READER_ID) VALUES (?,?,?,?,?,?)";
+        String sql="INSERT INTO library.seat(SEAT_ID, FLOOR, NUM, STATUS,END_TIME,READER_ID) VALUES (?,?,?,?,?,?)";
         try {
             Connection conn= new ConnectMysql().getConn();
             preStr=conn.prepareStatement(sql);
@@ -49,7 +49,7 @@ public class SeatDao {
      * @return 该座位的全部信息
      */
     public static Seat selectOne(String seatId){
-        String sql="SELECT * FROM SEAT WHERE SEAT_ID=?";
+        String sql="SELECT * FROM library.seat WHERE SEAT_ID=?";
         try {
             Connection conn= new ConnectMysql().getConn();
             preStr=conn.prepareStatement(sql);
@@ -71,7 +71,7 @@ public class SeatDao {
      */
     public static ArrayList<Seat> selectAll(){
         ArrayList<Seat> result = new ArrayList<>();
-        String sql="SELECT * FROM SEAT";
+        String sql="SELECT * FROM library.seat";
         try {
             Connection conn= new ConnectMysql().getConn();
             preStr=conn.prepareStatement(sql);
@@ -94,7 +94,7 @@ public class SeatDao {
      * @return 是否成功
      */
     public static boolean updateOne(Seat seat){
-        String sql="UPDATE SEAT SET STATUS=?,END_TIME=?,READER_ID=? WHERE SEAT_ID=?";
+        String sql="UPDATE library.seat SET STATUS=?,END_TIME=?,READER_ID=? WHERE SEAT_ID=?";
         Connection conn= new ConnectMysql().getConn();
         try {
             preStr=conn.prepareStatement(sql);
@@ -123,7 +123,7 @@ public class SeatDao {
         ArrayList<Seat> list=new ArrayList<>();
         Connection conn= new ConnectMysql().getConn();
         if (status==3){
-            String sql="SELECT * FROM SEAT WHERE FLOOR=?";
+            String sql="SELECT * FROM library.seat WHERE FLOOR=?";
             try {
                 preStr=conn.prepareStatement(sql);
                 preStr.setInt(1,floor);
@@ -136,7 +136,7 @@ public class SeatDao {
                 e.printStackTrace();
             }
         }else if (status==1||status==0){
-            String sql="SELECT * FROM SEAT WHERE FLOOR=? AND STATUS=?";
+            String sql="SELECT * FROM library.seat WHERE FLOOR=? AND STATUS=?";
             try {
                 preStr=conn.prepareStatement(sql);
                 preStr.setInt(1,floor);
@@ -161,7 +161,7 @@ public class SeatDao {
         Connection conn= new ConnectMysql().getConn();
         int result=0;
         try {
-            String sql="SELECT count(*) FROM SEAT WHERE FLOOR=? AND STATUS=0";
+            String sql="SELECT count(*) FROM library.seat WHERE FLOOR=? AND STATUS=0";
             preStr=conn.prepareStatement(sql);
             preStr.setInt(1,floor);
             rs=preStr.executeQuery();
@@ -169,7 +169,7 @@ public class SeatDao {
                 result+=rs.getInt(1);
             }
             result*=100;
-            sql="SELECT count(*) FROM SEAT WHERE FLOOR=? AND STATUS=1";
+            sql="SELECT count(*) FROM library.seat WHERE FLOOR=? AND STATUS=1";
             preStr=conn.prepareStatement(sql);
             preStr.setInt(1,floor);
             rs=preStr.executeQuery();

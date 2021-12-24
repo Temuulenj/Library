@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * @author temuulen
  */
-@WebServlet("/api/getByFloor")
+@WebServlet("/getByFloor")
 public class GetSeatByFloor extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

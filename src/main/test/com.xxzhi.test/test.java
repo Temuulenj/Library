@@ -10,9 +10,13 @@ import com.xxzhi.service.ReaderService;
 import com.xxzhi.service.ReserveService;
 import com.xxzhi.service.SeatService;
 import com.xxzhi.servlet.GetSeatByFloor;
+import com.xxzhi.tools.ConnectMysql;
 import org.junit.Test;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,7 +36,25 @@ public class test {
         }
 
     }
-
+    @Test
+    public void insertSeatData(){
+        PreparedStatement preStr;
+        String sql="INSERT INTO library.seat(SEAT_ID, FLOOR, NUM) VALUES (?,?,?)";
+        for (int i=1;i<=20;i++){
+            for(int t=1;t<=20;t++){
+                try {
+                    Connection conn= new ConnectMysql().getConn();
+                    preStr=conn.prepareStatement(sql);
+                    preStr.setString(1,String.valueOf(i*100+t));
+                    preStr.setInt(2,i);
+                    preStr.setInt(3, t);
+                    System.out.println(preStr.executeUpdate()==1);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
 
     /**

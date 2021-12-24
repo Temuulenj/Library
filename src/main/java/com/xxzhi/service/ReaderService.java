@@ -29,8 +29,8 @@ public class ReaderService {
 
     /**
      *
-     * @param reader
-     * @return
+     * @param reader 读者实体
+     * @return msg
      */
     public String signUp(Reader reader){
         if (ReaderDao.selectOne(reader.getReaderId())!=null){

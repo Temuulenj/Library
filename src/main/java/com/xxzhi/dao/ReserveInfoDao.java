@@ -59,7 +59,7 @@ public class ReserveInfoDao {
         return null;
     }
     public static ReserveInfo selectOne(String readerId,String seatId){
-        String sql="SELECT *FROM RESERVE_INFO WHERE READER_ID=? AND SEAT_ID=?";
+        String sql="SELECT *FROM library.reserve_info WHERE READER_ID=? AND SEAT_ID=?";
         try {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,readerId);

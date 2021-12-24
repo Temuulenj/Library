@@ -10,7 +10,6 @@
   <packaging>war</packaging>
 
   <name>Library Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
   <url>http://xxzhi.cn</url>
 
   <properties>
@@ -47,11 +46,6 @@
       <artifactId>javax.servlet-api</artifactId>
       <version>3.1.0</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>equinoxSDK381</groupId>
-      <artifactId>javax.servlet</artifactId>
-      <version>7.0.50</version>
     </dependency>
   </dependencies>
 

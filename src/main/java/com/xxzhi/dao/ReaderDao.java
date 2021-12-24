@@ -23,7 +23,7 @@ public class ReaderDao {
      * @return 是否成功
      */
     public static boolean insert(Reader reader){
-        String sql="INSERT INTO READER(READER_ID, NAME, PASSWORD, EMAIL,RESERVE_STATUS,SEAT_ID) VALUES (?,?,?,?,?,?)";
+        String sql="INSERT INTO library.reader(READER_ID, NAME, PASSWORD, EMAIL,RESERVE_STATUS,SEAT_ID) VALUES (?,?,?,?,?,?)";
         try {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,reader.getReaderId());
@@ -45,7 +45,7 @@ public class ReaderDao {
      */
     public static ArrayList<Reader> selectAll(){
         ArrayList<Reader> readers=new ArrayList<>();
-        String sql="SELECT * FROM READER";
+        String sql="SELECT * FROM library.reader";
         try {
             preStr=conn.prepareStatement(sql);
             rs= preStr.executeQuery();
@@ -64,7 +64,7 @@ public class ReaderDao {
      */
     public static Reader selectOne(String readerId){
         Connection conn= new ConnectMysql().getConn();
-        String sql="SELECT * FROM READER where READER_ID=?";
+        String sql="SELECT * FROM library.reader where READER_ID=?";
         try {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,readerId);
@@ -88,7 +88,7 @@ public class ReaderDao {
      * @return 是否成功
      */
     public static boolean updateOne(Reader reader){
-        String sql="UPDATE READER SET NAME=?,PASSWORD=?,EMAIL=?,RESERVE_STATUS=?,SEAT_ID=?,SIGN_IN_STATUS=? WHERE READER_ID=?";
+        String sql="UPDATE library.reader SET NAME=?,PASSWORD=?,EMAIL=?,RESERVE_STATUS=?,SEAT_ID=?,SIGN_IN_STATUS=? WHERE READER_ID=?";
         try {
             preStr=conn.prepareStatement(sql);
             preStr.setString(1,reader.getName());
